@@ -1,0 +1,34 @@
+{
+	"name": "pwarelis/script-compiler",
+	"description": "PHP web resource compiler and minifier",
+	"type": "library",
+	"license": "MIT",
+	"keywords": [
+		"javascript",
+		"css",
+		"module",
+		"compiler",
+		"minifier"
+	],
+	"homepage": "https://github.com/pwarelis/script-compiler",
+	"authors": [{
+		"name": "Paul Warelis",
+		"email": "pwarelis@gmail.com",
+		"homepage": "http://pwarelis.com"
+	}],
+	"require": {
+		"php": ">=5.3.3"
+	},
+	"require-dev": {
+		"phpunit/PHPUnit": "3.7.*"
+	},
+	"autoload": {
+		"psr-0": {
+			"ScriptCompiler\\": "src/",
+			"ScriptCompilerTest\\": "test/"
+		},
+		"classmap": [
+			"./"
+		]
+	}
+}
