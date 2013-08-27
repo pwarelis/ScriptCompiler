@@ -4,11 +4,14 @@ namespace ScriptCompiler\Compiler;
 
 use ScriptCompiler\Resource;
 
-class CoffeeScript extends LanguageCompiler {
+class TypeScript extends LanguageCompiler {
 	protected $baseLanguage = "js";
+	protected $defaults = array(
+		"removeComments"
+	);
 
 	public function compile(Resource $resource) {
-		$command = "coffee --compile {$resource->path} {$this->flags} --output {$resource->hash}";
+		$command = "tsc {$this->flags} --out {$resource->hash} {$resource->path}";
 		$this->execute($command);
 	}
 

@@ -45,18 +45,6 @@ class ScriptCompiler {
 			throw new \Exception("Configuration must be an array");
 		}
 
-/*
-Implement the following:
-
-https://www.dartlang.org
-coffeescript.org
-ckknight.github.io/gorillascript/
-www.typescriptlang.org
-www.cappuccino-project.org/learn/objective-j.html
-rubyjs.org/index.html
-
- */
-
 		$dc = $_SERVER['DOCUMENT_ROOT'];
 		$defaults = array(
 			"doc_root" => $dc,
@@ -68,7 +56,7 @@ rubyjs.org/index.html
 				'scss' => 'ScriptCompiler\Compiler\Sass',
 				'less' => 'ScriptCompiler\Compiler\Less',
 				'js' => 'ScriptCompiler\Compiler\UglifyJs2',
-				'cs' => 'ScriptCompiler\Compiler\CoffeeScript',
+				'coffee' => 'ScriptCompiler\Compiler\CoffeeScript',
 			)
 		);
 		return $this->mergeRecursive($defaults, $config);

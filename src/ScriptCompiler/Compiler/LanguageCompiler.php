@@ -9,9 +9,9 @@ use ScriptCompiler\Resource;
 
 abstract class LanguageCompiler {
 	protected $baseLanguage;
-	protected $defaults;
+	protected $defaults = array();
 	protected $options;
-	protected $flags;
+	protected $flags = '';
 
 	public function __construct() {
 		$this->newestTime = time();
