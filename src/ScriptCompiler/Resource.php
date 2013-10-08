@@ -17,16 +17,25 @@ class Resource {
 
 	public function __construct($data) {
 		$this->url = $data["url"];
-		$this->isRemote = (boolean) parse_url($this->url, PHP_URL_HOST);
+		
+		$prependScheme = preg_match("/^\/\//", $this->url);
+		$this->isRemote = $prependScheme || parse_url($this->url, PHP_URL_HOST);
+		if ($prependScheme) {
+			$this->url = (empty($_SERVER["HTTPS"]) ? "http:" : "https:") . $this->url;
+		}
 
 		if (isset($data["minified"])) {
 			$this->minified = $data["minified"];
 		}
 
 		if (isset($data["language"])) {
-			$this->language = $data["minified"];
+			$this->language = $data["language"];
 		} else {
-			$this->language = pathinfo($this->url, PATHINFO_EXTENSION);
+			if ($this->isRemote) {
+				$this->language = pathinfo(parse_url($this->url, PHP_URL_PATH), PATHINFO_EXTENSION);
+			} else {
+				$this->language = pathinfo($this->url, PATHINFO_EXTENSION);
+			}
 		}
 	}
 
